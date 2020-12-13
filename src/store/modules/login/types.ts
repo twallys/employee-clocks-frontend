@@ -1,6 +1,9 @@
 export interface ILogin {
-    email: string;
-    password: string;
+    email?: string;
+    password?: string;
+    token?:string;
+    id?:string;
+    name?:string;
 }
 
 export interface ILoginWarning {

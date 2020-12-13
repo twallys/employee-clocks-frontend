@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
@@ -15,11 +15,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../store';
 import api from '../../services/api';
 
-import { SubTitle, Form } from './styles';
-
-// USED 2 TYPES OF STYLES JUST FOR DEMONSTRATION
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      width: 400,
+      margin: `${theme.spacing(0)} auto`
+    },
+    loginBtn: {
+      marginTop: theme.spacing(2),
+      flexGrow: 1
+    },
     header: {
       textAlign: 'center',
       background: '#212121',
@@ -31,12 +38,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Login = () => {
+const Register = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
   const loginState = useSelector<IState, ILoginState>(state => state.login);
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -48,30 +56,40 @@ const Login = () => {
     }
   }, [dispatch, email, password]);
 
-  async function handleLogin(login: ILogin) {
-    await api.post('/sessions', login).then(response => {
+  async function handleRegister(login: ILogin) {
+    await api.post('/users', login).then(response => {
       dispatch({
-        type: 'LOGIN_SUCCESS',
+        type: 'REGISTER_SUCCESS',
         payload: response.data,
       })
-      history.push('/clocks-list')
+      history.push('/clocks-list');
     })
     .catch(error => {
       dispatch({
-        type: 'LOGIN_FAILED',
+        type: 'REGISTER_FAILED',
         payload: [],
       })
     })
   }
 
   return (
-    <Form noValidate autoComplete="off">
+    <form className={classes.container} noValidate autoComplete="off">
       <Card className={classes.card}>
-        <CardHeader className={classes.header} title="Employee Clocks Login" />
+        <CardHeader className={classes.header} title="Login App" />
         <CardContent>
           <div>
             <TextField
-              error={loginState.warnings.isError}
+              fullWidth
+              id="name"
+              type="name"
+              name="name"
+              label="Name"
+              placeholder="Name"
+              margin="normal"
+              value={name}
+              onChange={(ev) => setName(ev.target.value)}
+            />
+            <TextField
               fullWidth
               id="email"
               type="email"
@@ -83,7 +101,6 @@ const Login = () => {
               onChange={(ev) => setEmail(ev.target.value)}
             />
             <TextField
-              error={loginState.warnings.isError}
               fullWidth
               id="password"
               type="password"
@@ -101,22 +118,15 @@ const Login = () => {
             variant="contained"
             size="large"
             color="secondary"
-            onClick={() => handleLogin({ email, password })}
+            className={classes.loginBtn}
+            onClick={() => handleRegister({ name, email, password })}
             disabled={loginState.warnings.isButtonDisabled}>
             Login
           </Button>
         </CardActions>
-        
-          <SubTitle>
-            Don't have an account? 
-            <Link to='/register'>
-              Register now!
-            </Link>
-        </SubTitle>
-      
       </Card>
-    </Form>
+    </form>
   );
 }
 
-export default Login;
+export default Register;

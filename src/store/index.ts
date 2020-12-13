@@ -5,10 +5,12 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from "./modules/rootReducer";
 import { ICartState } from "./modules/cart/types";
 import { ILoginState } from './modules/login/types';
+import { IClocksState } from './modules/clocks/types';
 
 export interface IState {
     cart: ICartState;
     login: ILoginState;
+    clocks: IClocksState;
 }
 
 const sagaMiddleware = createSagaMiddleware();

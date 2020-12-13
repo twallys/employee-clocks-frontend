@@ -1,11 +1,7 @@
 <h1 align="center">
-  <img alt="MovieCraziesBanner" title="#MovieCraziesBanner" src="./src/assets/banner.png" />
+    <a href="https://employee-clocks-frontend.vercel.app">🔗 Employee Clocks</a>
 </h1>
-
-<h1 align="center">
-    <a href="https://movie-crazies.vercel.app">🔗 Movie Crazies</a>
-</h1>
-<p align="center">🚀 Este projeto tem o objetivo de pesquisar por filmes, ver características e informações de um determinado filme além de uma lista para que seus filmes favoritos sejam colocados. <a href="https://movie-crazies.vercel.app">🔗 Acesse aqui a versão em Produção</a></p>
+<p align="center">🚀 Este Projeto tem o Objetivo de cadastrar um usuário de empregado e o mesmo pode bater o ponto nos horários de saída e entrada. <a href="https://employee-clocks-frontend.vercel.app">🔗 Acesse aqui a versão em Produção</a></p>
 
 <br/>
 <br/>
@@ -22,14 +18,16 @@
 </p>
 
 <h4 align="center"> 
-	🚧  Movie Crazies - React Project 🚀 Concluído... mas não quer dizer que é o fim.  🚧
+	🚧  Employee Clocks - React Project 🚀 Concluído... mas não quer dizer que é o fim.  🚧
 </h4>
 
 ## Features
 
-- [x] Pesquisa de Filmes
-- [x] Consulta Filme
-- [x] Favorita Filmes (Persistido)
+- [x] Cadastro Usuário
+- [x] Login Usuário
+- [x] Bater Ponto
+- [] Listagem Por Usuário
+- [] Token obrigatorio nos EndPoints
 
 ## Pré-requisitos
 
@@ -41,10 +39,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/twallys/movie-list.git>
+$ git clone <https://github.com/twallys/employee-clocks-frontend>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd movie-list
+$ cd employee-front-end
 
 # Instale as dependências
 $ yarn
@@ -55,22 +53,14 @@ $ yarn start
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
 ```
 
-### 🎲 Testando a Aplicação
-
-```bash
-
-# Execute o comando
-$ yarn test
-
-```
-
 ### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Jestjs](https://jestjs.io)
+- [Redux](https://redux.js.org)
+- [Material Ui](https://material-ui.com/pt/)
 
 ### Autor
 ---

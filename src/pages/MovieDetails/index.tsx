@@ -13,7 +13,6 @@ import { MovieItem, MovieDescription, MovieCast, Poster, RatingItens, Error } fr
 interface MovieDetailsParams {
     imdbID: string;
 }
-
 interface Movie {
     Poster: string,
     Title: string,
