@@ -53,10 +53,6 @@ const Login = () => {
     }
   }, [dispatch, email, password]);
 
-  // const handleLogin = () => {
-  //   dispatch(singin({ email, password }));
-  // }
-
   async function handleLogin(login: ILogin) {
     await api.post('/sessions', login).then(response => {
       dispatch({
@@ -71,23 +67,6 @@ const Login = () => {
       })
     })
   }
-
-  // const handleLogin = useCallback((login: ILogin) => {
-  //   // dispatch(singin(login));
-  //   api.post('/sessions').then(response => {
-  //     dispatch({
-  //       type: 'LOGIN_SUCCESS',
-  //       payload: response.data,
-  //     })
-  //   })
-  //   .catch(error => {
-  //     dispatch({
-  //       type: 'LOGIN_FAILED',
-  //       payload: [],
-  //     })
-  //   })
-    
-  // }, [dispatch]);
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
